@@ -1,24 +1,14 @@
 <script lang="ts">
     export let script: string[] = [];
-    export let place: number = 0;
-  
-    let currentText: string = script[place] || '';
-    let previousText: string[] = [];
-    let futureText: string[] = [];
-  
-    $: {
-      currentText = script[place] || '';
-      previousText = script.slice(Math.max(place - 7, 0), place);
-      futureText = script.slice(place + 1, place + 8);
-    }
-  </script>
-  
-  {#each previousText as chunk, index}
-    <p>{chunk}</p>
-  {/each}
-  
-  <p class="bg-black text-white">{currentText}</p>
-  
-  {#each futureText as chunk, index}
-    <p>{chunk}</p>
-  {/each}
+    export let translation: string[] = [];
+</script>
+
+<div class="flex flex-col text-center items-center justify-center overflow-hidden">
+        {#each translation as chunk, index}
+        <div class="card bg-slate-700 overflow-y-auto w-full">
+            <p class="italic">{script[index]}</p>    
+            <p>{chunk}</p>
+        </div>
+        <div class="mt-[8px]"></div>
+        {/each}
+</div>

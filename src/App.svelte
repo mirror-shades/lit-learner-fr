@@ -1,8 +1,10 @@
 <script lang="ts">
   import Body from "./Body.svelte"
+  import Header from "./Header.svelte";
 </script>
 
-<main class="h-screen flex items-center justify-center">
+<main>
+  <Header />
   <Body />
 </main>
 

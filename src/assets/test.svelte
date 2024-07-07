@@ -1,46 +1,28 @@
-<script lang="ts">
-  export let script: string[] = [];
-  export let place: number = 0;
-  console.log(script);
+<script>
+  import { onMount } from 'svelte';
+  let foo1Text = "Short text";
+  let foo2Text = "Another short text";
+
+  // Update text dynamically for demonstration purposes
+  onMount(() => {
+      setTimeout(() => {
+          foo1Text = "This is an updated text which is significantly longer to test the layoutThis is an updated text which is significantly longer to test the layoutThis is an updated text which is significantly longer to test the layoutThis is an updated text which is significantly longer to test the layoutThis is an updated text which is significantly longer to test the layout";
+      }, 3000);
+
+      setTimeout(() => {
+          foo2Text = "This is another updated text which is much longer";
+      }, 6000);
+  });
 </script>
 
-<style>
-  .text-container {
-    position: relative;
-    height: 200px; /* Set according to your needs */
-    overflow: hidden;
-  }
-
-  .text-fade-out {
-    position: relative;
-    padding-bottom: 40px; /* Adjust according to the gradient */
-    overflow-y: auto;
-  }
-
-  .text-fade-out::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px; /* Adjust according to the gradient */
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
-  }
-  
-  .highlight {
-    background-color: black;
-    color: white;
-  }
-</style>
-
-<div class="text-container">
-  <div class="text-fade-out">
-    {#each script as chunk, index}
-      {#if index === place}
-        <p class="highlight">{chunk}</p>
-      {:else}
-        <p>{chunk}</p>
-      {/if}
-    {/each}
+<div class="container relative min-h-screen flex items-center justify-center">
+  <div class="content-wrapper text-center">
+      <div class="foo1 mb-4">
+          {foo1Text}
+      </div>
+      <div class="foo2 mt-4">
+          {foo2Text}
+      </div>
   </div>
+  <div class="black-rectangle bg-black w-32 h-16 absolute"></div>
 </div>
