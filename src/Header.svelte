@@ -1,6 +1,11 @@
+<script lang="ts">
+    import {story} from "./lib/store" 
+    let menuOpen: boolean = false;
+</script>
+
 <div class="absolute navbar bg-base-100">
     <div class="flex-none">
-      <button class="btn btn-square btn-ghost">
+      <button on:click={()=>{menuOpen = !menuOpen}} class="btn btn-square btn-ghost">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -15,3 +20,22 @@
       </button>
     </div>
   </div>
+
+  {#if menuOpen}
+  <ul class=" absolute menu mt-16 bg-base-200 rounded-box w-56">
+      <details>
+        <summary>French</summary>
+        <ul>
+            <li><a on:click={()=>{
+                story.set("chickenLittle")
+            }}>Chicken Little</a></li>
+            <li><a on:click={()=>{
+                story.set("littleRed")
+            }}>Little Red Riding Hood</a></li>
+            <li><a on:click={()=>{
+                story.set("uglyDuckling")
+            }}>The Ugly Ducking</a></li>
+        </ul>
+      </details>
+  </ul>
+  {/if}

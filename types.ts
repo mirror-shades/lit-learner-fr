@@ -1,0 +1,1 @@
+export type StoryKey = "chickenLittle" | "littleRed" | "uglyDuckling";
