@@ -1,10 +1,9 @@
 <script lang="ts">
-  import Body from "./Body.svelte"
-  import Header from "./Header.svelte";
+  import Body from "./components/Body.svelte";
+  import Header from "./components/Header.svelte";
 </script>
 
 <main>
   <Header />
   <Body />
 </main>
-
