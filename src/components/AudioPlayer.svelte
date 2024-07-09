@@ -65,7 +65,7 @@
   }
 </script>
 
-<button on:click={togglePlay} class="btn btn-ghost btn-circle">
+<button on:click={togglePlay} class="btn btn-sm btn-ghost btn-circle">
   {#if isPlaying}
     <Stop />
   {:else if isThinking}

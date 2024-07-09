@@ -1,11 +1,5 @@
 import { writable } from 'svelte/store';
 
-export let story = writable("chickenLittle");
-export let index = writable(0);
-export let translation = writable([]);
-export let fullText = writable([]);  
-
-
 export const chickenLittle = [
   "Laissez-moi vous raconter l’histoire d'un Poulet.",
   "Ses amis l’appellent Petit Poulet.",
@@ -195,3 +189,11 @@ export const uglyDuckling = [
   "Le vilain caneton rougit.",
   "Je ne suis pas le plus beau de tous les cygnes dit-il Je suis le plus HEUREUX de tous les cygnes!"
 ];
+
+export let story = writable("chickenLittle");
+export let index = writable(0);
+export let translation = writable([]);
+export let fullText = writable(chickenLittle);  
+export let helperHistory = writable(new Map());
+
+
