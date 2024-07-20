@@ -4,6 +4,7 @@
   import { translation, fullText, helperHistory, index } from "../lib/store";
   import Message from "./icons/Message.svelte";
   import Helper from "./Helper.svelte";
+  import type { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 
   let newMessage = "";
   let modals = writable(
@@ -33,7 +34,7 @@
     });
   };
 
-  const sendMessage = (chunk: any, index: number) => {
+  const sendHelperMessage = (chunk: any, index: number) => {
     updateModals(index, (modal) => {
       modal.messages.push({ text: chunk, sender: "You" });
       modal.messages.push({ text: "hey", sender: "Helper" });
@@ -55,6 +56,14 @@
       value = map.get(index);
     })();
     return value;
+  };
+
+  const fetchAIResponse = async (messages: ChatCompletionMessageParam[]) => {
+    const completion = await openai.chat.completions.create({
+      model,
+      messages: messages,
+    });
+    return completion.choices[0].message.content;
   };
 
   const toggleModal = (index: number) => {
@@ -104,7 +113,7 @@
                 <button
                   class="btn btn-primary"
                   on:click={() => {
-                    sendMessage(chunk, idx);
+                    sendHelperMessage(chunk, idx);
                   }}
                 >
                   Send

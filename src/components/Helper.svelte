@@ -1,5 +1,5 @@
-<script>
-  export let messages = [];
+<script lang="ts">
+  export let messages: string[] = [];
   let newMessageText = "";
 </script>
 
