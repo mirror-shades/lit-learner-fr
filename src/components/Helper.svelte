@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let messages: string[] = [];
+  export let messages: any[] = [];
   let newMessageText = "";
 </script>
 
@@ -13,10 +13,3 @@
     {/each}
   {/if}
 </div>
-
-<style>
-  .chat-container {
-    max-width: 600px;
-    margin: auto;
-  }
-</style>
